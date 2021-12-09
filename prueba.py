@@ -1,17 +1,8 @@
-import numpy as np 
+for x in range(1,19):
+    print('hol')
+    if x > 10:
+        print('hols')
+    else:
+        print('hola')
 
-
-
-
-import numpy as np 
-
-
-
-
-
-
-
-
-
-
-import numpy as np 
+print('hola')
