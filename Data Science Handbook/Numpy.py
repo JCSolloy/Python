@@ -287,4 +287,96 @@ a + b
 #El broadcasting ajusta la dimension del producto de la operacion entre las dos matrices
 #Reglas de broadcasting
 #Ver las reglas del broadcasting pagina 65
- 
+
+#Regla 1: si dos arreglos difieren en su dimension, la forma del que tiene una dimension menor is padded con unos a su lado izquierdo  
+
+#Regla 2: si la forma de los dos arreglos no concuerdan en ninguna dimension, el arreglo con forma igual a uno en esa dimension es acomodado para coincidir con la otra forma. 
+
+#Regla 3: Si ninguna dimension los tamaños no coinciden y ninguno es igual a 1, entonces dara un error. 
+
+#Broadcasting
+#Agregar una matriz de dos dimensiones a una de una dimension.
+M = np.ones((2, 3))
+a = np.arange(3)
+#Las formas de las matrices son 
+M.shape()
+a.shape()
+#Por la regla 1, el arreglo (a) tiene menos dimensiones, por lo tanto se rellenan a la izquierda con unos. 
+
+#Ejemplo de broadcasting página 68
+#Un ejemplo comun es centrrar una matriz de datos
+#Imagina que tienes una matriz de 10 observaciones, cada uno tiene 3 valores. 
+
+X = np.random.random((10, 3))
+
+#Podemos calcular la media para cada caracteristica a lo largo de la primera dimension 
+
+Xmean = X.mean(0)
+Xmean
+
+#Ahora podemos centrar la matriz X restandole la media esto con la operacion broadcasting
+
+X_centered = X - Xmean
+X_centered
+
+X_centered.mean(0)
+
+
+#Dibujando una funcion de dos dimensiones
+#Un lugar donde el broadcasting es muy util es desplegando imagenes basadas en funciones de dos dimensiones. 
+#Si queremso definir la funcion z = f(x,y), broadcasting puede ser usado para calcular la funcion a lo largo del grid
+
+# x, y tienen tienen 50 pasos desde 0 a 5 
+x = np.linspace(0, 5, 50)
+y = np.linspace(0, 5, 50)[:, np.newaxis]
+
+z = np.sin(x)**10 +np.cos(10 + y * x)* np.cos(x)
+
+import matplotlib.pyplot as plt
+
+plt.imshow(z, origin='lower', extent=[0, 5, 0, 5], cmap='viridis')
+plt.colorbar();
+plt.show()
+
+
+#Comparaciones, Mascaras, y logica boleana
+#Masking se utiliza cuando se quiere extraer, modificar, contar o manipular de alguna manera valores en las matrices basados en algun criterio, por ejemplo abajo de algun valor o mayor a algun valor.
+
+#Operadores de comparacion como ufuncs
+
+#Numpy tambien implementa operadores comparadores como < > elemento por elemento, el resultado de la comparasion es boleano
+
+x = np.array([1, 2, 3, 4, 5, 6])
+x < 3 #Menor que 
+x > 3 #Mayor que 
+x <= 3 #Menor o igual que 
+x >= 3 #Mayor o igual que 
+x != 3 #Diferente que  
+x == 3 #igual que 
+
+#Tambien es posible hacer una comparasion de elemento por elemento entre dos matrices
+
+(2*x) == (x**2)
+
+#Como en le caso de los operadores aritmeticos, los operadores de comparasion son implementados
+# como ufuncs de Numpy, cuando se utiliza x < 3, internamente numpy usa np.less(x,3)
+
+#Los operadores de comparasion en Numpy son :
+'''
+== np.equal 
+!= np.not_equal 
+<  np.less
+<= np.less_equal
+>  np.greater
+>= np.greater_equal
+'''
+
+#Estas fucionan tambien en matrices de diferentes dimensiones y tamaños 
+
+rng = np.random.RandomState(0)
+x = rng.randint(10, size=(3, 4))
+
+x < 6
+
+
+
