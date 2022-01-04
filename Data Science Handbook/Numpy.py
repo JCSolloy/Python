@@ -284,5 +284,7 @@ a = np.arange(3)
 b = np.arange(3)[:,np.newaxis]
 
 a + b
-
+#El broadcasting ajusta la dimension del producto de la operacion entre las dos matrices
 #Reglas de broadcasting
+#Ver las reglas del broadcasting pagina 65
+ 
