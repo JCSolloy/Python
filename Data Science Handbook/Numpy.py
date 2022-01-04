@@ -378,5 +378,127 @@ x = rng.randint(10, size=(3, 4))
 
 x < 6
 
+#Trabajando con arreglos boleanos 
+
+#Para contar el numero de elementos verdaderos en un arreglo boleano  
+ np.count_nonzero(x < 6)
+
+#Tambien se puede hacer esto mismo con np.sum() el beneficio de hacerlo son esto es que se puede hacer a lo largo de columnas o filas, Falso es interpretado como 0 y True como 1 
+
+np.sum(x< 6, axis=1) #Esto muestra la cantidad de valores menor a 6 en cada columna de la matriz 
+ 
+
+#Operadores boleanos 
+
+#Los operadores boleanos son and(&), or(|), xor(^) y not(~)
+#Estos operadores los podemos utilizar cuando queremos encontrar valores dentro de un rango 
+#Para estos operadores es importante utilizar bien los parentesis 
+#Los operadores boleanos son los siguientes con sus equivalentes ufuncs
+
+ '''
+ &  np.bitwise_and
+ |  np.bitwise_or
+ ^  np.bitwise_xor
+ ~  np.bitwise_not
+ '''
+#np.sum(inches > 5) & (inches <1)
+#Arreglos boleanos como mascaras
+#Un patron mas poderoso es usar arreglos boleanos como mascaras, para seleccionar subconjuntos de datos.
+#Supongamos que queremos un arreglo de los valores que son menor que algun valor.
+
+x
+x < 5 #Con esto se obtiene un arreglo que muestra los valores que cumplen
+
+#Para obtener los elementos del arreglo que cumplen con la condicion se utiliza 
+x[x < 5]
 
 
+#Diferencia entre usar palabras u operadores
+#Al utilizar (and), (or) este da el resultado del objeto entero como una unica entidad boleana
+#Al utilizar (&), (|) este da el resultado de cada elemento dentro de cada objeto
+
+#Al utilizar and o or es equivalente a preguntarle a Python para tratar al objeto como una unica enitdad boleana. Todos los enteros no iguales a 0 son evaluados como True.
+
+bool(42), bool(0)
+
+bool(42 and 0)
+
+bool(42 or 0)
+
+
+#Cuando se usa & y | en enteros, la expresion opera en los bits del elemento, aplicando la operacion and o or, en los bits indivudualtes 
+
+bin(42)
+
+bin(49)
+
+bin(42 & 59)
+
+bin(42 | 59)
+
+
+#Cuando se tiene una matriz de valores boleanos en Numpy, si se utiliza | se operan los valores individuales de las matrices, si se utilzia or, Python toma todo el arreglo como un unico elemento y salta un error 
+
+A = np.array([1, 0, 1, 0, 1, 0], dtype=bool)
+B = np.array([1, 1, 1, 0, 1, 1], dtype=bool)
+A | B
+A or B
+
+#Indexado elegante  
+
+rand = np.random.RandomState(42)
+
+x = rand.randint(100, size=10)
+
+#Supongamos que queremos acceder a tres dinstintos elementos del arreglo anterior
+[x[2], x[4], x[5]]
+
+#Otra manera de hacerlo es crear una lista y pasarla como indice
+
+ind = [2, 4, 5]
+x[ind]
+
+#Con el indexado elegante, la forma del resultado refleja la forma de las matrices de los indices en lugar de la forma de la matriz que se indexa:
+
+ind = np.array([[3, 7],
+               [4, 5]])
+
+x[ind]
+
+#Indexado elegante tambien funciona en multiples dimensiones 
+X = np.arange(12).reshape((3, 4))
+X
+
+row = np.array([0,1,2])
+col = np.array([2,1,3])
+X[row,col] #Esto nos da los elementos (0,2), (1,1) y (2,3), estos pares de indices siguen las reglas de broadcasting
+
+#Si se conbiman un vector columan y un vector fila dentro de los indices, obtenemos un resultado de dos dimensiones
+
+X[row[:, np.newaxis], col]
+
+#Es importante recordar que con indexado elegante regresa el valor de la forma de broadcastint de los indices, en vez de la forma del arreglo que es indexado
+
+
+#Indexado combinado 
+#Para operaciones incluso mas poderosas, el indexado elegante se puede combinar con otros esquemas de indexado
+
+#Podemos combinar el indexado elegante con indices simples
+
+X[2, [2, 0, 1]]
+
+#Tambien se puede combinar el indexado elegante con slicing
+
+X[1:, [2, 0, 1]]
+
+
+#Tambien se puede combinar indexado elegante con masking 
+
+mask = np.array([1, 0, 1, 0], dtype=bool)
+X[row[:, np.newaxis], mask]
+
+#Todas estas opciones permiten una manera flexible de accesar y modificar valores de los arreglos
+
+#Ejemplo seleccionar puntos aleatorios pagina 99
+
+#Modificando valores con indexado elegante 
