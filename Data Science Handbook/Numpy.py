@@ -211,3 +211,78 @@ y = np.zeros(10)
 np.power(2, x, out=y[::2])
 print(y)
 
+#Agregados
+#Existen algunos agregados interesantes que pueden ser computados diretamente a los objetos. 
+#Por ejemplo si se quiere reducir un arreglo con alguna operacion, se puede utilizar
+#el metodo para cualquier ufunc.
+
+x = np.arange(1,6)
+np.add.reduce(x) #Se suman los elementos del arreglo 
+
+np.multiply.reduce(x) #Se multiplican los elementos del arreglo 
+
+np.add.accumulate(x) #Se se quiere almacenar resultados intermecios se puede
+np.multiply.accumulate(x)
+
+#Outer products
+#Esta funcion permite operar cada par de elemento de dos entradas.
+
+x = np.arange(1,6)
+np.multiply.outer(x,x)
+
+#Minimos, maximos y todo lo que se encuentra en medio
+
+#Para sumar todos los valores de un arreglo 
+L = np.random.random(100)
+np.sum(L) #Se puede utilizar solo sum(L) pero como ya se menciono Numpy realiza las operaciones de una manera mas rapida
+
+#Minimos y maximos 
+big_array = np.random.rand(100000)
+np.min(big_array), np.max(big_array) #Tambien existen las funciones min() y max()
+
+#Una de las operaciones comunes es sumar los elementos de alguna columna o fila
+M = np.random.random((3,4))
+print(M)
+
+M.sum()
+
+M.min(axis=0) # (axis=0) regresa los valores de cada columna
+
+M.max(axis=1) # (axis=1) regresa los valores de cada fila 
+
+#Existen otras funciones de agregado las funciones np.nansum, np.nanprod
+# estas funciones operan el arreglo ignorando los resultados los valores faltantes NaN
+
+#Ver tabla 2-3 Aggregation functions available in Numpy
+
+#Ejemplo pagina 61 
+
+#Computation on arrays: Broadcasting
+
+#Broadcasting
+#es un conjunto de reglas para aplicar a funciones binarias (suma, resta, multiplicacion, etc) en matrices de diferentes tamaños. 
+
+
+#Para matrices del mismo tamaño las operaciones binarias son realizadas elemento por elemento.
+
+a = np.array([0, 1, 2])
+b = np.array([5, 5, 5])
+a + b
+
+#Broadcasting permite el tipo de operaciones binarias por matrices de diferentes tamaños
+#Se pueden agregar facilmente un escalar 
+
+a + 5 #Podemos pensar en esto como una operacion que ajusta el valor de 5 en una matriz d [5, 5, 5] 
+
+#Se puede hacer esto mismo con matrices de diferentes dimensiones 
+
+M = np.ones((3,3))
+
+M + a
+
+a = np.arange(3)
+b = np.arange(3)[:,np.newaxis]
+
+a + b
+
+#Reglas de broadcasting
