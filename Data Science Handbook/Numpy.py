@@ -499,6 +499,28 @@ X[row[:, np.newaxis], mask]
 
 #Todas estas opciones permiten una manera flexible de accesar y modificar valores de los arreglos
 
+mean = [0, 0]
+cov = [[1, 2],
+       [2,5]]
+X = rand.multivariate_normal(mean, cov, 100)
+X.shape
 #Ejemplo seleccionar puntos aleatorios pagina 99
+%matplotlib inline
+import matplotlib.pyplot as plt 
+import seaborn; seaborn.set() # for plot styling
+
+plt.scatter(X[:, 0], X[:, 1])
+plt.show()
 
 #Modificando valores con indexado elegante 
+#El indexado elegante se puede utilizr para acceder a partes de una matriz, esto tambien puede usarse para modificar partes de una matriz. 
+
+x = np.arange(10)
+i = np.array([2, 1, 8, 4])
+x[i] = 99 
+print(x)
+
+x[i] -= 10
+
+x = np.zeros(10)
+
