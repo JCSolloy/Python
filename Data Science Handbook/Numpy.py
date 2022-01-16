@@ -524,3 +524,5 @@ x[i] -= 10
 
 x = np.zeros(10)
 
+#Example Binning Data
+
