@@ -526,3 +526,6 @@ x = np.zeros(10)
 
 #Example Binning Data
 
+#02.08 Sorting 
+#Hay que tomar en cuenta los algoritmos de ordenamiento, ya que algunos dependiendo del diseño
+#Se pueden tardar mucho tiempo en ordenar el arreglo, tambien depende de si el arreglo es largo
