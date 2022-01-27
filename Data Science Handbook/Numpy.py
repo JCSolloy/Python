@@ -529,3 +529,37 @@ x = np.zeros(10)
 #02.08 Sorting 
 #Hay que tomar en cuenta los algoritmos de ordenamiento, ya que algunos dependiendo del diseño
 #Se pueden tardar mucho tiempo en ordenar el arreglo, tambien depende de si el arreglo es largo
+
+#Las funciones np.sort son mucho mas eficientes que las funciones sort que tiene Python
+#La funcion np.argsort nos regresa los indices de los elementos ordenados 
+
+#Una funcion util de los algoritmos de ordenamiento de Numpy es la habilidad de ordenar los elemenos a lo largo 
+#de una fila o columna especifica
+
+rand = np.random.RandomState(42)
+X = rand.randint(0,10, (4,6))
+print(X)
+
+#Ordenar cada columna de X
+np.sort(X, axis=0)
+
+#Ordenar cada fila de X
+np.sort(X, axis=1)
+
+#Hay que tomar en cuenta que esto trata cada fila o columna como arreglos independientes 
+#Y cada relacion entre los valores de las columnas o filas se pierde
+
+#Ordenamiento parcial 
+#Particionamiento
+#A veces nos interesa solo ordenar la matriz de ciertos valores en adelante
+#Para esto se utiliza np.partition, en donde se le asigna un valor K y el resultado es 
+#el arreglo con los primeros K valores a la izquierda y el resto a la derecha, ordenados en de una manera arbitraria  
+
+x = np.array([64, 0, 7, 2, 3, 1, 6, 5, 4, 10, 11])
+np.partition(x, 3)
+
+#Tambien se puede particionar a lo largo de una columna o fila 
+
+np.partition(X, 2, axis=1) #El resultado es un arreglo donde los dos primeros elmentos de cada 
+#fila contiene los valores mas pequeños de la fila, con los valores restantes en los espacios restantes
+#Tambien existe la funcion np.argpartition que particiona los indices del arreglo  
