@@ -563,3 +563,39 @@ np.partition(x, 3)
 np.partition(X, 2, axis=1) #El resultado es un arreglo donde los dos primeros elmentos de cada 
 #fila contiene los valores mas pequeños de la fila, con los valores restantes en los espacios restantes
 #Tambien existe la funcion np.argpartition que particiona los indices del arreglo  
+
+#Ejemplo de argsort
+
+#Veamos como se puede usar argsort a lo largo de multiples ejes para encontrar los vecinos mas cercanos de cada punto de un conjunto.
+
+X = rand.rand(10, 2) #Creamos un conjunto aleatorio de 10 puntos en un plano bidimensional
+
+%matplotlib inline 
+import matplotlib.pyplot as plt 
+import seaborn; seaborn.set() #Plot styling
+plt.scatter(X[:, 0], X[:, 1], s=100);
+plt.show() #Correr en python no en ipython, ya que no muestra las figuras de matplotlib
+
+# Estructura de datos: Estructura de matrices de Numpy 
+import numpy as np 
+
+#Imagine que tiene varias categorias de datos de un numero de personas(nombre, edad y peso) 
+#y queremos almacenar esos valores para usarlos en un programa de Python. 
+#Es posible almacenar esos valores en arreglos separados 
+
+nombre = ['Alice', 'Rob', 'Cat', 'Diana']
+edad = [25, 45, 37, 19]
+peso = [55.0, 85.5, 68.0, 61.5]
+
+#Pero esta forma de almacenar los datos no nos dicen como estan relacionados entre ellos
+#Numpy puede manejar con arreglos estructurados, los cuales son arreglos con tipo de datos compuestos
+#Podemos crear un arreglo estructurado usando un tipo compuesto de datos
+
+# Use a compound data type for structured arrays
+data = np.zeros(4, dtype={'names':('nombre', 'edad', 'peso'),
+                          'formats':('U10', 'i4', 'f8')})
+print(data.dtype)
+#'U10' transforma a 'String unicode de largo maximo 10'
+#'i4' convierte a 'entero de 4 byte(32 bits)'
+#'f8' convierte a 'flotante de 8 bytes(64 bits)'
+
