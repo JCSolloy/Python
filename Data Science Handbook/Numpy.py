@@ -599,3 +599,31 @@ print(data.dtype)
 #'i4' convierte a 'entero de 4 byte(32 bits)'
 #'f8' convierte a 'flotante de 8 bytes(64 bits)'
 
+#Ahora crearemos una matriz contenedora vacia, la cual se llenara con la lista de valores
+
+data['nombre'] = nombre
+data['edad'] = edad
+data['peso'] = peso 
+print(data)
+
+#Ahora se tienen los datos a un bloque de memoria, los cuales se pueden acceder por indice o nombre
+
+data['nombre']
+data[0]
+
+#Usando boolean masking, esto permite hacer algunas operaciones sofisticadas como filtrar por edad
+
+data[data['edad'] < 30]['nombre']
+
+#Para operaciones mas complicadas se recomienda utilizar Pandas
+#Ver tabla de caracteres para tipo de datos
+'''
+'b' byte
+'i' signed integer
+'u' unsigned integer
+'f' floating point
+'c' complex floating point
+'S, a' string
+'U' unicode
+'V' raw data
+'''
