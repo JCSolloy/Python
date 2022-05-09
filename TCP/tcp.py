@@ -11,7 +11,7 @@ regs = c.read_holding_registers(4419, 10)
 
 if regs:
     print(regs)
-    print('Conexión Modbus correcta')
+    print('UCM316 conexión Modbus correcta')
 else:
     print("read error")
 
@@ -27,7 +27,7 @@ regs = c.read_holding_registers(5000, 10)
 
 if regs:
     print(regs)
-    print('Conexión Modbus correcta')
+    print('Sensor de nivel FRM20 conexión Modbus correcta')
 else:
     print("Error de conexión")
 
@@ -43,6 +43,6 @@ regs = c.read_holding_registers(11, 10)
 
 if regs:
     print(regs)
-    print('Conexión Modbus correcta')
+    print('Medidor ION8650 conexión Modbus correcta')
 else:
     print("Error de conexión")
