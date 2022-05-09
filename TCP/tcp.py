@@ -30,3 +30,18 @@ if regs:
     print('Conexión Modbus correcta')
 else:
     print("Error de conexión")
+
+c = ModbusClient(host="10.232.0.53", 
+                 port=503,
+                 unit_id=1,
+                 debug=False,
+                 auto_open=True, 
+                 auto_close=True)
+
+regs = c.read_holding_registers(11, 10)
+
+if regs:
+    print(regs)
+    print('Conexión Modbus correcta')
+else:
+    print("Error de conexión")
