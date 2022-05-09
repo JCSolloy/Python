@@ -1,8 +1,9 @@
 from pyModbusTCP.client import ModbusClient
+#Modbus UCM316
 c = ModbusClient(host="10.232.3.41", 
                  port=502,
                  unit_id=0,
-                 debug=True,
+                 debug=False,
                  auto_open=True, 
                  auto_close=True)
 
@@ -14,12 +15,11 @@ if regs:
 else:
     print("read error")
 
-
-from pyModbusTCP.client import ModbusClient
+#Modbus Sensor de Nivel 
 c = ModbusClient(host="10.232.3.40", 
                  port=7004,
                  unit_id=1,
-                 debug=True,
+                 debug=False,
                  auto_open=True, 
                  auto_close=True)
 
