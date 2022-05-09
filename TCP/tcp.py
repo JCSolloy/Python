@@ -31,6 +31,7 @@ if regs:
 else:
     print("Error de conexión")
 
+#Modbus Medidor ION8650
 c = ModbusClient(host="10.232.0.53", 
                  port=503,
                  unit_id=1,
