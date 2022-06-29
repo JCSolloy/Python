@@ -48,6 +48,5 @@ for errorIndication, errorStatus, errorIndex, varBinds in iterator:
 
     else:
         for varBind in varBinds:
-            print('here 11111')
             print(' = '.join([x.prettyPrint() for x in varBind]))
 
