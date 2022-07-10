@@ -381,12 +381,12 @@ x < 6
 #Trabajando con arreglos boleanos 
 
 #Para contar el numero de elementos verdaderos en un arreglo boleano  
- np.count_nonzero(x < 6)
+np.count_nonzero(x < 6)
 
 #Tambien se puede hacer esto mismo con np.sum() el beneficio de hacerlo son esto es que se puede hacer a lo largo de columnas o filas, Falso es interpretado como 0 y True como 1 
 
 np.sum(x< 6, axis=1) #Esto muestra la cantidad de valores menor a 6 en cada columna de la matriz 
- 
+
 
 #Operadores boleanos 
 
@@ -395,12 +395,12 @@ np.sum(x< 6, axis=1) #Esto muestra la cantidad de valores menor a 6 en cada colu
 #Para estos operadores es importante utilizar bien los parentesis 
 #Los operadores boleanos son los siguientes con sus equivalentes ufuncs
 
- '''
- &  np.bitwise_and
- |  np.bitwise_or
- ^  np.bitwise_xor
- ~  np.bitwise_not
- '''
+'''
+&  np.bitwise_and
+|  np.bitwise_or
+^  np.bitwise_xor
+~  np.bitwise_not
+'''
 #np.sum(inches > 5) & (inches <1)
 #Arreglos boleanos como mascaras
 #Un patron mas poderoso es usar arreglos boleanos como mascaras, para seleccionar subconjuntos de datos.
