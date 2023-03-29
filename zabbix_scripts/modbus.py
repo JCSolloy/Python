@@ -8,12 +8,9 @@ def Modbus(IP, Puerto, Registro, Cantidad_de_registros, ID_Dispositivo):
     try:
          connection = ModbusClient(host=IP, port=Puerto, unit_id=ID_Dispositivo, debug=False)
          Regs = connection.read_holding_registers(Registro, Cantidad_de_registros)
-         Message = "Comunicación Modbus Correcta"
-         connection.close()
     except:
-        Message = "Error de comunicación"
-        connection.close()
-    return Regs, Message
+        prin("Error de interrogación")
+    return Regs
 
 if __name__ == '__main__':
 
@@ -23,8 +20,19 @@ if __name__ == '__main__':
     Cantidad_de_registros = int(sys.argv[4])
     ID_Dispositivo = int(sys.argv[5])
 
-    print(IP,Puerto,Registro,Cantidad_de_registros,ID_Dispositivo)
-
-    #test = Modbus("10.232.2.170", 502, 4419,10,0)
     test = Modbus(IP, Puerto, Registro, Cantidad_de_registros, ID_Dispositivo)
-    print(test)
+
+    if test == None:
+        print("Error de comunicación Modbus 🛑🔴")
+    else:
+        print(f"""
+            Comunicación Modbus OK✅🟢
+            {test}
+            """)
+
+    print(f"""
+            IP = {IP} 
+            Puerto = {Puerto} 
+            Registro = {Registro} 
+            Cantidad de registros = {Cantidad_de_registros} 
+            ID Dispositivo = {ID_Dispositivo}""")
