@@ -2,3 +2,4 @@
 *.vagrant/
 *.devcontainer/
 *.vscode/
+/workspaces/Python/Curso-Fundamentos-de-Modelado-y-simulacion/
