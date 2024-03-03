@@ -1,15 +1,16 @@
 // arrays in c++
+// print elements of an array
 
 #include <iostream>
 using namespace std;
 
 int main() {
-    int arreglo[5] = {1, 2, 3, 4, 5};
-    cout << arreglo[0] << endl;
-    cout << arreglo[1] << endl;
-    cout << arreglo[2] << endl;
+    int arr[5] = {1, 2, 3, 4, 5};
 
-    return 0;
+    for (int i = 0; i < 5; i++) {
+    cout << arr[i] << " ";
+    }
+    cout << endl;
+
+return 0;
 }
-
-
