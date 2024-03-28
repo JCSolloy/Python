@@ -12,9 +12,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.linked_clone = true
     end
   # Application server 1.
-  config.vm.define "app1" do |app|
+  config.vm.define "app1" do |app| 
     app.vm.hostname = "orc-app1.test"
     app.vm.network :private_network, ip: "192.168.56.4"
+  # Application server 2.
   end
   config.vm.define "app2" do |app|
     app.vm.hostname = "orc-app2.test"
