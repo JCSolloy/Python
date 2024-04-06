@@ -1,0 +1,33 @@
+---
+- name: Create user and add to sudo group
+  hosts: all
+  become: true  # Requires elevated privileges
+
+  tasks:
+    - name: Create user with home directory
+      user:
+        name: "banis"
+        home: "/home/banis"
+        create_home: yes
+        shell: /bin/bash  # Optional, specify the user's default shell
+        state: present
+
+    - name: Add user to sudo group
+      group:
+        name: sudo
+        append: yes
+        state: present
+      delegate_to: localhost  # Restrict group management to the control machine
+
+  vars:
+    user_name: banis  # Replace with the desired username
+
+  # Optional: Set password for the user (consider using separate playbook for security)
+  # - name: Set password for the user
+  #   user:
+  #     name: "{{ user_name }}"
+  #     password: "{{ user_password }}"
+  #     state: present
+  #   delegate_to: localhost  # Restrict password setting to the control machine
+  #   become: priv  # Requires root privileges
+

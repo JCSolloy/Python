@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+  - name: Update package lists
+    apt:
+      update_cache: yes
+      state: present
+    apt:
+      upgrade: yes
+      state: present
+  
+  - name: Install Neovim
+    apt:
+      name: neovim
+      state: present
