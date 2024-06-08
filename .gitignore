@@ -2,4 +2,5 @@
 *.vagrant/
 *.devcontainer/
 *.vscode/
+.venv
 /workspaces/Python/Curso-Fundamentos-de-Modelado-y-simulacion/
