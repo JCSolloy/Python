@@ -1,7 +1,11 @@
-import pyautogui as rpa
-import platform
 
-# Detect OS
+import platform
+import pyautogui as rpa
+import time
+
+wait = rpa.PAUSE = 1
+
+# Funcion para detectar el sistema operativo
 def detect_os():
     if platform.system() == 'Windows':
         os = 'Windows'
@@ -13,7 +17,7 @@ def detect_os():
         os = 'Unknown OS'
     return os
 
-# Open Excel
+# Funcion para abrir excel
 def open_excel():
     wait = 1
     if os == 'Windows':
@@ -35,24 +39,7 @@ def open_excel():
     else:
         print('Unknown OS')
 
-# Moverse al inicio de la hoja
-open_excel()
-time.sleep(wait)
-rpa.write('formulario usuarios rpa')
-time.sleep(wait)
-rpa.press('tab')
-time.sleep(wait)
-rpa.press('enter')
-time.sleep(wait*5)
-
-# Moverse al inicio de la hoja
-rpa.hotkey('command', 'left')
-time.sleep(wait)
-rpa.hotkey('command', 'up')
-time.sleep(wait)
-rpa.press('down')
-
-# Open Edge y el link al formulari y moverse al primer campo
+# Funcion para abrir edge
 def open_edge():
     if os == 'Windows':
         rpa.press('winleft')
@@ -77,6 +64,29 @@ def open_edge():
     else:
         print('Unknown OS')
 
+# Detectar el sistema operativo
+
+os = detect_os()
+
+## Abrir excel abrir el documento y moverse a la primera celda de la hoja activa
+open_excel()
+time.sleep(wait)
+rpa.press('tab')
+time.sleep(wait)
+rpa.press('tab')
+time.sleep(wait)
+rpa.write('formulario usuarios rpa')
+time.sleep(wait)
+rpa.press('enter')
+time.sleep(wait*5)
+# Moverse al inicio de la hoja
+rpa.hotkey('ctrl', 'home')
+time.sleep(wait)
+rpa.press('down')
+# Moverse a la primera celda de la hoja  
+
+# Abrir edge e ir al formulario de google
+
 open_edge()
 time.sleep(wait)
 rpa.write('https://forms.gle/FuJCsL1iZydZoF7w8')
@@ -89,4 +99,17 @@ rpa.press('tab')
 time.sleep(wait)
 rpa.press('tab')
 
-###
+## Excel abierto, y formulario en el primer campo
+# Moverse entre el formulario y excel e ir copiando los datos de excel al formulario
+rpa.hotkey('alt', 'tab')
+# Nombre
+rpa.hotkey('ctrl', 'c')
+time.sleep(wait)
+rpa.hotkey('tab')
+time.sleep(wait)
+rpa.hotkey('alt', 'tab')
+time.sleep(wait)
+rpa.hotkey('ctrl', 'v')
+time.sleep(wait)
+rpa.hotkey('tab')
+time.sleep(wait)
