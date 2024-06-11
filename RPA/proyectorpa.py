@@ -88,7 +88,7 @@ rpa.press('down')
 # Abrir edge e ir al formulario de google
 
 open_edge()
-time.sleep(wait)
+time.sleep(wait*5)
 rpa.write('https://forms.gle/FuJCsL1iZydZoF7w8')
 time.sleep(wait)
 rpa.press('enter')
@@ -98,6 +98,16 @@ time.sleep(wait)
 rpa.press('tab')
 time.sleep(wait)
 rpa.press('tab')
+#
+# Moverse al inicio de la hoja
+os = open_excel()
+time.sleep(wait)
+rpa.write('formulario usuarios rpa')
+time.sleep(wait)
+rpa.press('tab')
+time.sleep(wait)
+rpa.press('enter')
+time.sleep(wait*5)
 
 ## Excel abierto, y formulario en el primer campo
 # Moverse entre el formulario y excel e ir copiando los datos de excel al formulario
