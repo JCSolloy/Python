@@ -83,6 +83,27 @@ def copy_paste_fields(n):
     for i in range(n):
         copy_paste()
 
+# Funcion para llenar el formulario
+def fill_form():
+    copy_paste_fields(6)
+    time.sleep(wait)
+    rpa.press('enter')
+    time.sleep(wait)
+    rpa.press('tab')
+    time.sleep(wait)
+    rpa.press('enter')
+    time.sleep(wait*2)
+    rpa.press('tab')
+    time.sleep(wait)
+    rpa.press('tab')
+    time.sleep(wait)
+    rpa.press('tab')
+
+# function replicate fill_form() n times
+def replicate_fill_form(n):
+    for i in range(n):
+        fill_form()
+
 ## Abrir excel abrir el documento y moverse a la primera celda de la hoja activa
 open_excel()
 time.sleep(wait)
@@ -110,28 +131,6 @@ time.sleep(wait)
 rpa.press('tab')
 time.sleep(wait)
 rpa.press('tab')
-
-# Funcion para llenar el formulario
-def fill_form():
-    copy_paste_fields(6)
-    time.sleep(wait)
-    rpa.press('enter')
-    time.sleep(wait)
-    rpa.press('tab')
-    time.sleep(wait)
-    rpa.press('enter')
-    time.sleep(wait*2)
-    rpa.press('tab')
-    time.sleep(wait)
-    rpa.press('tab')
-    time.sleep(wait)
-    rpa.press('tab')
-
-# function replicate fill_form() n times
-def replicate_fill_form(n):
-    for i in range(n):
-        fill_form()
-
 
 # Funcion para llenar el formulario n veces
 replicate_fill_form(20)
