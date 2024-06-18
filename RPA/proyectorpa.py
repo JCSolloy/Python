@@ -100,7 +100,7 @@ rpa.press('down')
 
 # Abrir edge e ir al formulario de google
 open_edge()
-time.sleep(wait*5)
+time.sleep(wait*3)
 rpa.write('https://forms.gle/FuJCsL1iZydZoF7w8')
 time.sleep(wait)
 rpa.press('enter')
