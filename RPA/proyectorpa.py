@@ -3,7 +3,8 @@ import platform
 import pyautogui as rpa
 import time
 
-wait = rpa.PAUSE = 1
+# Variable para modificar el tiempo de espera entre acciones
+wait = sleep = 1
 
 # Funcion para detectar el sistema operativo
 def detect_os():
@@ -64,9 +65,23 @@ def open_edge():
     else:
         print('Unknown OS')
 
-# Detectar el sistema operativo
+def copy_paste():
+    rpa.hotkey('alt', 'tab')
+    time.sleep(wait)
+    rpa.hotkey('ctrl', 'c')
+    time.sleep(wait)
+    rpa.hotkey('tab')
+    time.sleep(wait)
+    rpa.hotkey('alt', 'tab')
+    time.sleep(wait)
+    rpa.hotkey('ctrl', 'v')
+    time.sleep(wait)
+    rpa.hotkey('tab')
+    time.sleep(wait)
 
-os = detect_os()
+def copy_paste_fields(n):
+    for i in range(n):
+        copy_paste()
 
 ## Abrir excel abrir el documento y moverse a la primera celda de la hoja activa
 open_excel()
@@ -75,24 +90,21 @@ rpa.press('tab')
 time.sleep(wait)
 rpa.press('tab')
 time.sleep(wait)
-rpa.write('formulario usuarios rpa')
+rpa.write('Formulario usuarios rpa')
 time.sleep(wait)
 rpa.press('enter')
-time.sleep(wait*5)
-# Moverse al inicio de la hoja
+time.sleep(wait*3)
 rpa.hotkey('ctrl', 'home')
 time.sleep(wait)
 rpa.press('down')
-# Moverse a la primera celda de la hoja  
 
 # Abrir edge e ir al formulario de google
-
 open_edge()
 time.sleep(wait*5)
 rpa.write('https://forms.gle/FuJCsL1iZydZoF7w8')
 time.sleep(wait)
 rpa.press('enter')
-time.sleep(wait*5)
+time.sleep(wait*3)
 rpa.press('tab')
 time.sleep(wait)
 rpa.press('tab')
@@ -109,17 +121,28 @@ time.sleep(wait)
 rpa.press('enter')
 time.sleep(wait*5)
 
-## Excel abierto, y formulario en el primer campo
-# Moverse entre el formulario y excel e ir copiando los datos de excel al formulario
-rpa.hotkey('alt', 'tab')
-# Nombre
-rpa.hotkey('ctrl', 'c')
-time.sleep(wait)
-rpa.hotkey('tab')
-time.sleep(wait)
-rpa.hotkey('alt', 'tab')
-time.sleep(wait)
-rpa.hotkey('ctrl', 'v')
-time.sleep(wait)
-rpa.hotkey('tab')
-time.sleep(wait)
+# Funcion para llenar el formulario
+def fill_form():
+    copy_paste_fields(6)
+    time.sleep(wait)
+    rpa.press('enter')
+    time.sleep(wait)
+    rpa.press('tab')
+    time.sleep(wait)
+    rpa.press('enter')
+    time.sleep(wait*2)
+    rpa.press('tab')
+    time.sleep(wait)
+    rpa.press('tab')
+    time.sleep(wait)
+    rpa.press('tab')
+
+os = detect_os()
+# function replicate fill_form() n times
+def replicate_fill_form(n):
+    for i in range(n):
+        fill_form()
+
+
+# Funcion para llenar el formulario n veces
+replicate_fill_form(20)
