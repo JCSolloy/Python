@@ -4,8 +4,7 @@ import pyautogui as rpa
 import time
 
 # Variable para modificar el tiempo de espera entre acciones
-wait = sleep = 1
-
+wait = sleep = 0.75
 # Funcion para detectar el sistema operativo
 def detect_os():
     if platform.system() == 'Windows':
@@ -18,6 +17,7 @@ def detect_os():
         os = 'Unknown OS'
     return os
 
+os = detect_os()
 # Funcion para abrir excel
 def open_excel():
     wait = 1
@@ -110,16 +110,6 @@ time.sleep(wait)
 rpa.press('tab')
 time.sleep(wait)
 rpa.press('tab')
-#
-# Moverse al inicio de la hoja
-os = open_excel()
-time.sleep(wait)
-rpa.write('formulario usuarios rpa')
-time.sleep(wait)
-rpa.press('tab')
-time.sleep(wait)
-rpa.press('enter')
-time.sleep(wait*5)
 
 # Funcion para llenar el formulario
 def fill_form():
@@ -137,7 +127,6 @@ def fill_form():
     time.sleep(wait)
     rpa.press('tab')
 
-os = detect_os()
 # function replicate fill_form() n times
 def replicate_fill_form(n):
     for i in range(n):
